@@ -31,10 +31,11 @@ except ImportError:
 import os
 
 OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
-if 'BASE_URL' in os.environ:
-    BASE_URL = os.environ['BASE_URL']
-else:
-    BASE_URL = None
+BASE_URL = "http://localhost:8000/v1"
+# if 'BASE_URL' in os.environ:
+#     BASE_URL = os.environ['BASE_URL']
+# else:
+#     BASE_URL = None
 
 
 class ModelBackend(ABC):
@@ -100,16 +101,16 @@ class OpenAIModel(ModelBackend):
             response = client.chat.completions.create(*args, **kwargs, model=self.model_type.value,
                                                       **self.model_config_dict)
 
-            cost = prompt_cost(
-                self.model_type.value,
-                num_prompt_tokens=response.usage.prompt_tokens,
-                num_completion_tokens=response.usage.completion_tokens
-            )
+            # cost = prompt_cost(
+            #     self.model_type.value,
+            #     num_prompt_tokens=response.usage.prompt_tokens,
+            #     num_completion_tokens=response.usage.completion_tokens
+            # )
 
-            log_visualize(
-                "**[OpenAI_Usage_Info Receive]**\nprompt_tokens: {}\ncompletion_tokens: {}\ntotal_tokens: {}\ncost: ${:.6f}\n".format(
-                    response.usage.prompt_tokens, response.usage.completion_tokens,
-                    response.usage.total_tokens, cost))
+            # log_visualize(
+            #     "**[OpenAI_Usage_Info Receive]**\nprompt_tokens: {}\ncompletion_tokens: {}\ntotal_tokens: {}\ncost: ${:.6f}\n".format(
+            #         response.usage.prompt_tokens, response.usage.completion_tokens,
+            #         response.usage.total_tokens, 0))
             if not isinstance(response, ChatCompletion):
                 raise RuntimeError("Unexpected return from OpenAI API")
             return response
