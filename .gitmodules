@@ -1,3 +1,9 @@
 [submodule "WareHouse/Gomoku_GitMode_20231025184031"]
 	path = WareHouse/Gomoku_GitMode_20231025184031
 	url = ./WareHouse/Gomoku_GitMode_20231025184031
+[submodule "WareHouse/drone_DefaultOrganization_20240326164447"]
+	path = WareHouse/drone_DefaultOrganization_20240326164447
+	url = ./WareHouse/drone_DefaultOrganization_20240326164447
+[submodule "WareHouse/firelock_DefaultOrganization_20240327082855"]
+	path = WareHouse/firelock_DefaultOrganization_20240327082855
+	url = ./WareHouse/firelock_DefaultOrganization_20240327082855
